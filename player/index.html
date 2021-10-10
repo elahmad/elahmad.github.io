@@ -1,0 +1,62 @@
+<html>
+<head>
+  <title>elahmad M3U8 & MPD Player</title>
+  <style type="text/css">body{margin:0 auto;}</style>
+      <script src='//cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js'></script>
+      <script src='//cdn.jsdelivr.net/npm/level-selector@latest/dist/level-selector.min.js'></script>
+      <script src='//cdn.jsdelivr.net/npm/clappr-chromecast-plugin@latest/dist/clappr-chromecast-plugin.min.js'></script>
+      <script src='//cdn.jsdelivr.net/npm/clappr-pip@latest/dist/clappr-pip.min.js'></script>
+      <script src='//cdn.jsdelivr.net/npm/dash-shaka-playback@latest/dist/dash-shaka-playback.min.js'></script>
+      <script src='//cdn.jsdelivr.net/npm/p2p-media-loader-core@latest/build/p2p-media-loader-core.min.js'></script>
+      <script src='//cdn.jsdelivr.net/npm/p2p-media-loader-hlsjs@latest/build/p2p-media-loader-hlsjs.min.js'></script>
+      <script src='//cdn.jsdelivr.net/npm/clappr-playback-rate-plugin@latest/dist/clappr-playback-rate-plugin.min.js'></script>
+</head>
+<body bgcolor='black' style='margin:0'>
+<div id="player"></div>
+<script>
+function playM3u8(url, license){                        
+ var player = new Clappr.Player({                 
+                    source: url,
+                    parentId: '#player',
+                    preload: 'auto',
+                    autoPlay: 'true',
+                    width: '100%',
+                    height: '100%',
+                    fullscreenEnabled:'true',
+                    hideMediaControl: 'false',
+                    plugins: [LevelSelector, ChromecastPlugin, ClapprPip.PipButton, ClapprPip.PipPlugin, DashShakaPlayback],
+           
+                    chromecast: {
+                      appId: '9DFB77C0',
+                      media: {
+                        type: ChromecastPlugin.Movie,
+                        title: 'elahmad HLS - DASH',
+                      },
+                  },
+
+                    shakaConfiguration: {
+                    preferredAudioLanguage: 'pt-BR',
+                    drm: {
+                    servers: {
+                    'com.widevine.alpha': license
+                             }
+                         },
+                    streaming: {
+                      rebufferingGoal: 15
+                    }
+                  },
+                  shakaOnBeforeLoad: function(shaka_player) {
+                    // shaka_player.getNetworkingEngine().registerRequestFilter() ...
+                  },
+
+                });
+
+  document.title = "elahmad.com: " +url;
+    
+}
+
+playM3u8(window.location.href.split("#")[1], window.location.href.split("=")[1])
+</script>
+</body>
+</html>
+
