@@ -1,7 +1,7 @@
 
 ## Welcome to موقع الاحمد
 
-http://www.elahmad.com/
+http://www.elahmad.org/
 
 
 # m3u8-player
@@ -13,7 +13,7 @@ If you want to extract m3u8 files from live streams. You can use `youtube-dl -F 
 and then type `youtube-dl -f <itag> -g <video-url>` for the direct link. Paste it in the website mentioned above and play it.
 If it doesn't work, then raise an issue.
   
-If you want live streams legally then visit this repo - http://www.elahmad.com/tv/video-player.php
+If you want live streams legally then visit this repo - http://www.elahmad.org/tv/video-player.php
 
 This website is tested on Google Chrome and Firefox desktop web browsers. Not tested on android and iOS. Raise an issue if it doesn't work.
 ## Keyboard shortcuts
